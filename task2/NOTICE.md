@@ -1,4 +1,4 @@
-# Progress so far, Sources of error and near-term goasl for perfection of task 2.
+# Progress so far, Sources of error and near-term goals for perfection of task 2.
 
 So , the point of this program is to simulate noise artificial noise using X, Y and Z gates only. The transpilation gate basis is given. Now using our add sum function we have to perform binary addition. the noise addition and basis gate transpilation is working perfectly. The only focus right now is to write the `add_sum` function correctly and verify the same from the draper addition paper. I haven't yet seen the general quantum arithmetic paper because it had additional circuits for multiplication as well as exponentiation. All we need to do for this task is addition. \
 \
