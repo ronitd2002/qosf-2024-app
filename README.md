@@ -1,6 +1,6 @@
 # QOSF 2024 fall cohort solutions
 
-I have tried to solve Task 2 as well but please for my official submission consider Task 1.
+I have tried to solve Task 2 as well but please consider Task 1 for my official submission.
 
 # Task 1 : 
 
