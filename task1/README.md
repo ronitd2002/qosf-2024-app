@@ -8,4 +8,5 @@ To reduce the load we explore another "classical" technique employing the idea o
 
 The BONUS section deals with sampling of these simulated quantum states mimicking real measurements using `np.random.choice` parameterized by the coefficient probability of each of these states and secondly the calculation of expectation value for arbitrary operators of suitable `shape`.
 
-**Task 1 subtask 1**: we use `np.transpose` because of qiskit's qubit ordering which is inverted. So we transpose the resulting matrix in the "qiskit-functionality" section
+## **Task 1 subtask 1**: 
+We use `np.transpose` because of qiskit's qubit ordering which is inverted. So we transpose the resulting matrix in the "qiskit-functionality" section
