@@ -18,3 +18,6 @@ Next I use an advanced simulation method by using tensors which is also another 
 
 ### BONUS
 The BONUS section deals with sampling of these simulated quantum states mimicking real measurements using `np.random.choice` parameterized by the probability ($coefficient^2$) of each of these states and then sampling the same for 100 shots. Secondly the calculation of expectation value is also pretty simple as all we have to do for any arbitrary operator of appropriate shape is : $\langle \psi | O | \psi \rangle =$ `np.dot(np.conjugate(statevec), np.dot(O, statevec))`.
+
+
+**For each section I have validated my results against traditional pennylane results to show the accuracy of my final product states for each implementation i.e NAIVE matrix as well as ADVANCED tensor.**
