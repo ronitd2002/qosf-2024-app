@@ -1,4 +1,4 @@
-# QOSF 2024 fall cohort solutions
+# QOSF 2024 fall cohort selection tasks
 
 I have tried to solve Task 1 and Task 2. Please consider **Task 1** for my official submission.
 
