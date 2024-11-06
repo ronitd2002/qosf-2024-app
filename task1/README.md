@@ -7,3 +7,5 @@ Our main solution starts in the next bit where the "simulation" of these quantum
 To reduce the load we explore another "classical" technique employing the idea of tensors and writing them as a tensor of shape `(2,2,...)` n times. once this is done using `np.tensordot` reduces the time for computation drastically as is also shown in the code. 
 
 The BONUS section deals with sampling of these simulated quantum states mimicking real measurements using `np.random.choice` parameterized by the coefficient probability of each of these states and secondly the calculation of expectation value for arbitrary operators of suitable `shape`.
+
+**Task 1 subtask 1**: we use `np.transpose` because of qiskit's qubit ordering which is inverted. So we transpose the resulting matrix in the "qiskit-functionality" section
