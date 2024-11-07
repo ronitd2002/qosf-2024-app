@@ -51,10 +51,4 @@ To directly address the noise introduced by one-qubit and two-qubit gates in our
 
 ## Effect of noise on results..
 
-The counts around the correct answer progressively decreases with increase in the noise probabilities [ $\alpha$, $\beta$].
-
----
-
-# What I want to work on for this QOSF cohort?
-
-Specify your experience and interest....
+The counts around the correct answer progressively decreases with increase in the noise probabilities $\alpha$ & $\beta$.
