@@ -2,6 +2,7 @@
 
 I have tried to solve Task 1 and Task 2. Please consider **Task 1** for my official submission.
 
+---
 # Task 1 : 
 
 ## Explanation :
