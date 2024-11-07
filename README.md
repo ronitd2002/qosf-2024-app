@@ -21,3 +21,20 @@ The BONUS section deals with sampling of these simulated quantum states mimickin
 
 
 **For each section I have validated my results against traditional pennylane results to show the accuracy of my final product states for each implementation i.e NAIVE matrix as well as ADVANCED tensor.**
+
+---
+# Task 2
+
+## Explanation and requirements for completion
+
+This task wtv...
+
+## Effect of noise on results..
+
+Show the effect.
+
+---
+
+# What I want to work on for this QOSF cohort?
+
+Specify your experience and interest....
