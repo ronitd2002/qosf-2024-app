@@ -28,27 +28,56 @@ The BONUS section deals with sampling of these simulated quantum states mimickin
 
 ## Explanation and requirements for completion
 
-This tasks deals with the potrayal of increasing noise to the results. For these purposes of noise simulation I was required to build a adder circuit using the Draper algorithm. The drpaer algorithm achieves it using $|a,b\rangle \rightarrow^{Draper} |a,b+a\rangle$ using $|a,b\rangle \rightarrow^{QFT} |a,\phi(b)\rangle \rightarrow^{QFT} |a,\phi(a+b)\rangle \rightarrow^{IQFT} |a,a+b\rangle$
+# Draper's QFT-Based Quantum Addition with Noise Simulation
 
-We use two three bit numbers like 3 ('b'='011') and 4 ('b' = '100') and sum it to get 7 which should be ('b'='111'). The scheme of **Draper adder** is to first turn b into $|\phi(b)\rangle$ and then use phase gates from a to b similar to the general qft scheme. 
+This research code implements **Draper’s QFT-based addition algorithm** and explores the impact of quantum noise on computational fidelity. It provides insights into the behavior of quantum circuits under realistic noise conditions.
 
-Now to simulate noise I have used the `add_noise` function which randomly adds X, Y and Z gates into the circuit based on $\alpha$ probability for single qubit gates and CX, CY and CZ gates into the circuit based on $\beta$ probability. Till now we have the adder circuit and the noise function finished. I have used the basis gates given in the question for this transpilation routine. 
+## Key Components
 
-To potray the effect of noise I sweep alpha and beta for 5 values between [0.5, 1]. And store these circuits to show the count values for each.
+### 1. Draper’s QFT-Based Addition  
+The code constructs a quantum circuit to add two integers using quantum states:
+- **QFT**: Encodes integer addition in the frequency domain.
+- **IQFT**: Transforms results back to the computational basis.
+- The circuit uses quantum registers to represent inputs and the sum.  
+Example:  
+( |3 $\rangle$ + |4 $\rangle$ = |7 $\rangle$ )
 
-To directly address the noise introduced by one-qubit and two-qubit gates in our QPU-transpiled circuit, we can employ both circuit optimization and error mitigation techniques that are compatible with the target QPU’s hardware topology. Our main aim is to minimize noise while preserving the statevector fidelity and ensuring accurate measurement outcomes.
+### 2. Noise Injection in Quantum Circuits  
+Noise is modeled as random Pauli operators applied probabilistically after quantum gates:
+- **( $\alpha$ )**: Probability of applying noise after single-qubit gates.
+- **( $\beta$ )**: Probability of applying noise after two-qubit gates.  
+Function `add_noise()` applies these noise models, creating a noisy version of the circuit.
 
-#### 1. **Circuit Optimization During Transpilation**
-   - Trivial methods - **Gate Reduction**: Qiskit provides optimization levels within the transpiler that minimize the gate count by reducing redundant gate sequences and simplifying the circuit structure. For instance, adjacent gates that cancel each other (like successive Pauli-X gates) or gate pairs that simplify to a lower-cost equivalent (e.g., combining rotations) can be merged, reducing noise.
-   - More importantly - **Native Gate Decomposition**: By decomposing the circuit and good transpilation with proper optimization directly into the QPU’s native gate set, we bypass intermediate gates that would require further decomposition, reducing error from accumulated noise.
+### 3. Gate Basis Transformation  
+To ensure compatibility with realistic quantum processing units (QPUs), circuits are transformed into the gate basis: {CX, ID, RZ, SX, X}.
 
-#### 2. **Error Mitigation Techniques**
-   - **Zero-Noise Extrapolation (ZNE)**: This method simulates low-noise conditions by scaling gate errors in the circuit (like amplifying noise slightly) and then extrapolating the results back to estimate the zero-noise outcome. Practically, this is done by running the circuit at multiple noise levels and fitting the results to “zero” noise—particularly useful for both one-qubit and two-qubit errors.
-   
-#### 3. **Algorithmic Solutions for Real Hardware**
-   - **Dynamical Decoupling (DD)**: This method helps tackle the issue of decoherence greatly. Applied at the level of the hardware, DD sequences mitigate noise for one-qubit gates using pulses.
-   - **Qubit Mapping and Routing**: Intelligent qubit mapping, where the logical qubits are placed on physically “closer” qubits in the QPU, reduces the need for two-qubit gates across long distances, directly decreasing noise from two-qubit gate errors. This becomes even more effective when combined with the transpiler’s layout optimization, ensuring that the transpilation process respects hardware-specific connectivity.
+### 4. Fidelity Analysis  
+Fidelity quantifies the similarity between the ideal and noisy circuit outputs:
+- **Noise Levels**: Fidelity is analyzed for varying noise probabilities (\(\alpha, \beta\)).
+- **Findings**: Fidelity generally decreases with increased noise, but results can vary based on gate usage and noise configuration.
 
-## Effect of noise on results..
+## Visualizations  
+- **Histograms**: Show the output counts for ideal and noisy simulations.  
+- **Line Plot**: Depict fidelity trends across different noise levels.
 
-The counts around the correct answer progressively decreases with increase in the noise probabilities $\alpha$ & $\beta$.
+This code offers a framework for analyzing the robustness of quantum algorithms in noisy environments, providing critical insights for quantum error mitigation research.
+
+# Questions :
+
+### 1. How does noise affect the results?
+
+Noise in quantum computations distorts the intended operations, leading to deviations in statevector fidelity and inaccurate measurement outcomes. Each gate, especially two-qubit gates, introduces errors that accumulate throughout the circuit, amplifying the impact of noise on the final results. Mitigating noise is essential to maintain reliable computations and accurate results.
+
+For our purposes the above analyses answer the question.
+
+### 2. Is there a way to decrease noise?
+
+1. To address noise in QPU-transpiled circuits, employ circuit optimization and error mitigation techniques tailored to the hardware's topology. Key strategies include gate reduction, native gate decomposition directly translate circuits into the QPU's native gate set to reduce redundant operations, and methods like **Zero-Noise Extrapolation (ZNE)** to estimate low-noise results, preserving fidelity and improving measurement accuracy.  
+
+---
+
+2. **Dynamical Decoupling (DD)** reduces decoherence at the hardware level, and intelligent qubit mapping minimizes two-qubit gate errors by optimizing qubit placement on the QPU. Intelligent qubit mapping places logical qubits on physically closer QPU qubits, reducing long-distance two-qubit gates that amplify noise. Combined with layout optimization during transpilation, this approach ensures that the circuit respects hardware-specific connectivity, decreasing two-qubit gate errors and enhancing overall circuit performance.  
+
+### 3. How does the number of gates affect the amount of noise? 
+
+The number of gates directly correlates with noise levels, as each gate introduces errors that accumulate throughout the circuit. Two-qubit gates are particularly error-prone, so circuits with many such gates experience higher noise. Optimizing gate sequences and minimizing gate count are crucial for reducing overall noise in quantum computations.
