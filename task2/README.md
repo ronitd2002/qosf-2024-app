@@ -8,7 +8,7 @@ This project implements a **Quantum Fourier Transform (QFT)-based addition circu
    - Implements QFT and its inverse (IQFT) to add two numbers using quantum states.
    - Measures the output in the computational basis to verify correctness.  
    Example:  
-   ( |3$\rangle$ + |4$\rangle$ = |7$\rangle$)
+   ( |3 $\rangle$ + |4 $\rangle$ = |7 $\rangle$ )
 
 2. **Noise Simulation**  
    - Adds random Pauli noise to one- and two-qubit gates:
