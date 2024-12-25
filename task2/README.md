@@ -10,12 +10,12 @@ The code constructs a quantum circuit to add two integers using quantum states:
 - **IQFT**: Transforms results back to the computational basis.
 - The circuit uses quantum registers to represent inputs and the sum.  
 Example:  
-\( |3\rangle + |4\rangle = |7\rangle \).
+( |3 $\rangle$ + |4 $\rangle$ = |7 $\rangle$ )
 
 ### 2. Noise Injection in Quantum Circuits  
 Noise is modeled as random Pauli operators applied probabilistically after quantum gates:
-- **\(\alpha\)**: Probability of applying noise after single-qubit gates.
-- **\(\beta\)**: Probability of applying noise after two-qubit gates.  
+- **( $\alpha$ )**: Probability of applying noise after single-qubit gates.
+- **( $\beta$ )**: Probability of applying noise after two-qubit gates.  
 Function `add_noise()` applies these noise models, creating a noisy version of the circuit.
 
 ### 3. Gate Basis Transformation  
